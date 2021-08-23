@@ -13,7 +13,7 @@ dag = DAG(
 
 
 list_files = BashOperator(
-    task_id='list_files', bash_command='ls -l', dag=dag)
+    task_id='list_files', bash_command='ls -la', dag=dag)
 
 task_dag_param = BashOperator(
     task_id='task_dag_param',
