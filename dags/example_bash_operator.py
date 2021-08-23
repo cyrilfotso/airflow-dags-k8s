@@ -1,6 +1,6 @@
-from airflow.operators.bash import BashOperator
 from airflow.models import DAG
 from airflow.utils.dates import days_ago
+from airflow.operators.bash import BashOperator
 
 args = {
     'owner': 'airflow',
