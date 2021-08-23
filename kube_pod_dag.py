@@ -15,7 +15,7 @@ args = {
 with DAG(
     dag_id='example_kubernetes_executor',
     default_args=args,
-    schedule_interval=None,
+    schedule_interval='@daily',
     start_date=days_ago(2),
     tags=['example', 'example2'],
 ) as dag:
