@@ -15,7 +15,7 @@ args = {
 with DAG(
     dag_id='example_kubernetes_executor',
     default_args=args,
-    schedule_interval=None,
+    schedule_interval='@daily',
     start_date=days_ago(2),
     tags=['example', 'example2'],
 ) as dag:
@@ -44,13 +44,19 @@ with DAG(
         if return_code != 0:
             raise SystemError("The zip binary is not found")
 
+
+    def my_func(**kwargs):
+        print(kwargs)
+        return kwargs['param_1']
+
     # You don't have to use any special KubernetesExecutor configuration if you don't want to
     start_task = PythonOperator(task_id="start_task", python_callable=print_stuff)
 
     # But you can if you want to
     one_task = PythonOperator(
         task_id="one_task",
-        python_callable=print_stuff,
+        python_callable=my_func,
+        op_kwargs={'param_1': 'one', 'param_2': 'two', 'param_3': 'three'},
         executor_config={"KubernetesExecutor": {"image": "airflow/ci:latest"}},
     )
 
