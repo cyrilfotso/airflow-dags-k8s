@@ -52,6 +52,12 @@ with DAG(
     # You don't have to use any special KubernetesExecutor configuration if you don't want to
     start_task = PythonOperator(task_id="start_task", python_callable=print_stuff)
 
+    zero_task = PythonOperator(
+        task_id="one_task",
+        python_callable=my_func,
+        op_kwargs={'param_1': 'one', 'param_2': 'two', 'param_3': 'three'},
+        executor_config={"KubernetesExecutor": {"labels": {"foo": "bar"}}},
+    )
     # But you can if you want to
     one_task = PythonOperator(
         task_id="one_task",
