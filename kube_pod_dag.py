@@ -47,6 +47,7 @@ with DAG(
 
     def my_func(**kwargs):
         print(kwargs)
+        print('return from dag run zero')
         return kwargs['param_1']
 
     # You don't have to use any special KubernetesExecutor configuration if you don't want to
