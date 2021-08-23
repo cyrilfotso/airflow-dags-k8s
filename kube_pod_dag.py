@@ -53,7 +53,7 @@ with DAG(
     start_task = PythonOperator(task_id="start_task", python_callable=print_stuff)
 
     zero_task = PythonOperator(
-        task_id="one_task",
+        task_id="zero_task",
         python_callable=my_func,
         op_kwargs={'param_1': 'one', 'param_2': 'two', 'param_3': 'three'},
         executor_config={"KubernetesExecutor": {"labels": {"foo": "bar"}}},
