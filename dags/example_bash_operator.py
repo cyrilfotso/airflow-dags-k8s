@@ -26,6 +26,6 @@ task_dag_param = BashOperator(
 
 python_bash = BashOperator(
     task_id='python_bash',
-    bash_command='python ../src/opp_id.py',
+    bash_command='python /opt/airflow/dags/repo/src/opp_id.py',
     dag=dag)
 
