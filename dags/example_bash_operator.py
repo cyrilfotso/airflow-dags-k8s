@@ -9,7 +9,7 @@ args = {
 
 dag = DAG(
     dag_id='example_bash_operator', default_args=args,
-    schedule_interval='@daily')
+    schedule_interval='@daily', tags=['BashOperator'])
 
 
 list_files_opt = BashOperator(
