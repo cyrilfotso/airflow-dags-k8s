@@ -1,7 +1,12 @@
 import re
+import os
 import time
 import random
 import pandas as pd
+from pathlib import Path
+
+
+PARENT_PATH = str(Path(__file__).resolve().parents[1])
 
 
 def set_pattern(x):
@@ -14,7 +19,7 @@ def set_pattern(x):
 
 def data_processing():
     sleep_times = [1, 4, 5, 10]
-    df = pd.read_csv('./data/tweets.csv')
+    df = pd.read_csv(os.path.join(PARENT_PATH, 'data', 'tweets.csv'))
     df.head(10)
     time.sleep(random.choice(sleep_times))
     df.dropna(inplace=True)
