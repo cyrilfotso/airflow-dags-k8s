@@ -12,8 +12,8 @@ dag = DAG(
     schedule_interval='@daily')
 
 
-list_files = BashOperator(
-    task_id='list_files',
+list_files_opt = BashOperator(
+    task_id='list_files_opt',
     bash_command='ls /opt/airflow/dags/repo/',
     # bash_command='cd .. && ls -la',
     dag=dag
